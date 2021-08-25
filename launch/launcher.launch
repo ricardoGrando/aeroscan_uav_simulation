@@ -1,6 +1,6 @@
 <launch>
   <arg name="mav_name" default="c5"/>
-  <arg name="world_name" default="basic"/>
+  <arg name="world_name" default="assembly_line"/>
   <arg name="enable_logging" default="false" />
   <arg name="enable_ground_truth" default="true" />
   <arg name="log_file" default="$(arg mav_name)" />
@@ -38,4 +38,13 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   </group>
+
+  <arg name="namespace" default="c5"/>
+
+  <node name="laserscan_to_pointcloud" pkg="leica_gazebo_simulation" type="laserscan_to_pointcloud" ns="$(arg namespace)" output="screen"/>
+
+  <node name="leica_service_listener" pkg="leica_gazebo_simulation" type="leica_service_listener" ns="$(arg namespace)" output="screen"/>
+
+  <node name="move_c5_pan" pkg="leica_gazebo_simulation" type="move_c5_pan.py" output="screen"/>
+
 </launch>
