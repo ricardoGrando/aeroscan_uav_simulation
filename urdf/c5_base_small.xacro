@@ -2,7 +2,7 @@
 
 <robot name="c5" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find aeroscan_uav_simulation)/urdf/component_snippets.xacro" />
-  <!-- Instantiate firefly "mechanics" -->
+  <!-- Instantiate iris "mechanics" -->
   <xacro:include filename="$(find aeroscan_uav_simulation)/urdf/c5.xacro" />
 
   <!-- Instantiate a controller. -->
@@ -10,7 +10,7 @@
 
   <xacro:if value="$(arg enable_mavlink_interface)">
     <!-- Instantiate mavlink telemetry interface. -->
-    <xacro:default_mavlink_interface namespace="${namespace}" imu_sub_topic="imu" rotor_count="6" />
+    <xacro:default_mavlink_interface namespace="${namespace}" imu_sub_topic="imu" rotor_count="4" />
   </xacro:if>
 
   <!-- Mount an ADIS16448 IMU. -->

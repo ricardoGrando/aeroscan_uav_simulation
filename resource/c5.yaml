@@ -1,12 +1,18 @@
-# Iris vehicle parameters
-mass: 1.52
+# Firefly vehicle parameters
+mass: 7.570
+# inertia: {xx: 88.12874706, xy: 3.049735432, xz: -0.002397487, yy: 2.933980791, yz: 3.332416221, zz: 88.102728321}
+# mass: 1.52
 inertia: {xx: 0.0347563, xy: 0.0, xz: 0.0, yy: 0.0458929, yz: 0.0, zz: 0.0977}
 
 # angle should be expressed in rad
 # direction 1 means counter clockwise, -1 clockwise
 # The order of the rotors matters for the calculation of the allocation matrix.
 rotor_configuration:
-  '0': {angle: -0.533708, arm_length: 0.255539, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
-  '1': {angle: 2.565218, arm_length: 0.238537, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
-  '2': {angle: 0.533708, arm_length: 0.255539, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
-  '3': {angle: -2.565218, arm_length: 0.238537, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
+  '0': {angle: -0.3926990816975, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
+  '1': {angle: 2.7488935718825003, arm_length: 0.7457, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
+  '2': {angle: 0.3926990816975, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
+  '3': {angle: -2.7488935718825003, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
+  '4': {angle: -1.1780972450925, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
+  '5': {angle: 1.9634954084875, arm_length: 0.7457, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: 1.0}
+  '6': {angle: 1.1780972450925, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
+  '7': {angle: -1.9634954084875, arm_length: 0.745, rotor_force_constant: 8.54858e-06, rotor_moment_constant: 1.6e-2, direction: -1.0}
