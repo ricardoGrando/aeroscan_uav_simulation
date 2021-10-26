@@ -1,12 +1,12 @@
 <launch>
   <arg name="mav_name" default="c5"/>
-  <arg name="world_name" default="assembly_line"/>
+  <arg name="world_name" default="oil_rig"/>
   <arg name="enable_logging" default="false" />
   <arg name="enable_ground_truth" default="true" />
   <arg name="log_file" default="$(arg mav_name)" />
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <!-- The following line causes gzmsg and gzerr messages to be printed to the console
       (even when Gazebo is started through roslaunch) -->
   <arg name="verbose" default="false"/>
@@ -46,5 +46,9 @@
   <node name="leica_service_listener" pkg="leica_gazebo_simulation" type="leica_service_listener" ns="$(arg namespace)" output="screen"/>
 
   <node name="move_c5_pan" pkg="leica_gazebo_simulation" type="move_c5_pan.py" output="screen"/>
+
+  <node name="publisher_tf" pkg="leica_gazebo_simulation" type="publish_tf.py" output="screen"/>
+
+  <node name="aeroscan_uav_simulation_node" pkg="aeroscan_uav_simulation" type="aeroscan_uav_simulation.py" output="screen"/>
 
 </launch>

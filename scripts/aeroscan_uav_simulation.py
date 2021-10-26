@@ -13,17 +13,16 @@ if __name__ == "__main__":
 
     pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
 
-    posx = [-2.0, -2.0, 4.0]
-    posy = [0.0, -7.0, -10.0]
-    posz = [2.5, 2.5, 2.5]
-    oriz = [0.0, math.pi/4, math.pi/2]
+    posx = [5.0        , 15.0    , 15.0,     25.0,     25.0,     25.0,          15.0,       0.0,       -15.0,     -30.0,      -45.0,      -60.0,        -75.0, -90.0, -90.0,   -90.0,     -75.0,     -60.0,     -35.0,     -10.0]
+    posy = [-5.0       , 7.0    , 15.0,     30.0,     40.0,     65.0,          70.0,       70.0,       70.0,      70.0,       70.0,       70.0,         70.0,  60.0,  30.0,    0.0,      -10.0,     -10.0,     -10.0,     -10.0]
+    oriz = [3*math.pi/4, math.pi, math.pi, math.pi, math.pi, -3*math.pi/4, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/4, 0.0,   0.0,   0.0,   math.pi/4, math.pi/2, math.pi/2,   math.pi/2]
 
     i = 0
 
     pose = PoseStamped()
     pose.pose.position.x = 0.0
     pose.pose.position.y = 0.0
-    pose.pose.position.z = 2.5
+    pose.pose.position.z = 40
 
     pub.publish(pose)
 
@@ -36,7 +35,7 @@ if __name__ == "__main__":
         pose = PoseStamped()
         pose.pose.position.x = posx[i]
         pose.pose.position.y = posy[i]
-        pose.pose.position.z = posz[i]
+        pose.pose.position.z = 40.0
 
         wx, wy, wz, ww = quaternion_from_euler(0.0, 0.0, oriz[i])
         pose.pose.orientation.x = wx
@@ -48,18 +47,20 @@ if __name__ == "__main__":
 
         print(pose)
 
-        time.sleep(10)
+        time.sleep(90)
 
         rospy.wait_for_service('/c5/scan')
         try:
             proxy = rospy.ServiceProxy('/c5/scan', Scan)
-            proxy('scan_sim', 512, 1024, 0.0, 0.0, 2, 2)
+            proxy('scan_sim', 512, 2048, 0.0, 0.0, 2.0, 2.0)
         except (rospy.ServiceException) as e:
             print("gazebo/reset_simulation service call failed")
 
         i += 1
 
-        time.sleep(45)
+        time.sleep(75)
 
         if (i == len(posx)):
             break
+
+        # break
