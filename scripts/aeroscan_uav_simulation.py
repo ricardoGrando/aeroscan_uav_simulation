@@ -22,7 +22,7 @@ if __name__ == "__main__":
     pose = PoseStamped()
     pose.pose.position.x = 0.0
     pose.pose.position.y = 0.0
-    pose.pose.position.z = 40
+    pose.pose.position.z = 2
 
     pub.publish(pose)
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
         pose = PoseStamped()
         pose.pose.position.x = posx[i]
         pose.pose.position.y = posy[i]
-        pose.pose.position.z = 40.0
+        pose.pose.position.z = 2.0
 
         wx, wy, wz, ww = quaternion_from_euler(0.0, 0.0, oriz[i])
         pose.pose.orientation.x = wx
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
         print(pose)
 
-        time.sleep(90)
+        time.sleep(20)
 
         rospy.wait_for_service('/c5/scan')
         try:
