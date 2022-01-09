@@ -9,7 +9,9 @@
   <arg name="paused" default="false"/>
   <arg name="verbose" default="false"/>
 
-  <param name="mesh_path" type="str" value="/home/ricardo/Downloads/18_z.obj" />
+  <!-- <param name="mesh_path" type="str" value="/home/ricardo/.gazebo/models/oil_rig/meshes/18_z.obj" /> -->
+  <param name="mesh_path" type="str" value="/home/ricardo/.gazebo/models/oil_rig/meshes/cubo_mesh_tri_2.obj" />
+  <!-- <param name="mesh_path" type="str" value="/home/ricardo/oil_rig.obj" /> -->
 
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find aeroscan_uav_simulation)/models"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find aeroscan_uav_simulation)/models"/>
