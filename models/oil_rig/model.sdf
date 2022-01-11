@@ -18,8 +18,12 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/oil_rig.obj</uri>
+            <uri>model://oil_rig/meshes/cubo_mesh_tri_2.obj</uri>
             <scale>1 1 1</scale>
+            <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
+            <scale>0.01 0.01 0.01</scale> -->
+            <!-- <uri>model://oil_rig/meshes/oil_rig.obj</uri>
+            <scale>1 1 1</scale> -->
           </mesh>
         </geometry>
         <transparency>0</transparency>
@@ -31,8 +35,12 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/oil_rig.obj</uri>
+            <uri>model://oil_rig/meshes/cubo_mesh_tri_2.obj</uri>
             <scale>1 1 1</scale>
+            <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
+            <scale>0.01 0.01 0.01</scale> -->
+            <!-- <uri>model://oil_rig/meshes/cube.obj</uri>
+            <scale>1 1 1</scale> -->
           </mesh>
         </geometry>
         <surface>
