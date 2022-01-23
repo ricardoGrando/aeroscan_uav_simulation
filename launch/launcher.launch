@@ -5,12 +5,12 @@
   <arg name="enable_ground_truth" default="true" />
   <arg name="log_file" default="$(arg mav_name)" />
   <arg name="debug" default="false"/>
-  <arg name="gui" default="true"/>
+  <arg name="gui" default="false"/>
   <arg name="paused" default="false"/>
   <arg name="verbose" default="false"/>
 
   <!-- <param name="mesh_path" type="str" value="/home/ricardo/.gazebo/models/oil_rig/meshes/18_z.obj" /> -->
-  <param name="mesh_path" type="str" value="/home/ricardo/.gazebo/models/oil_rig/meshes/cube1x1x1.obj" />
+  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/worlds/oil_rig/meshes/cube1x1x1.obj" />
   <!-- <param name="mesh_path" type="str" value="/home/ricardo/oil_rig.obj" /> -->
 
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find aeroscan_uav_simulation)/models"/>
