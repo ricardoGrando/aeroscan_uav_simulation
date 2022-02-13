@@ -26,6 +26,7 @@
   <xacro:property name="use_mesh_file" value="true" />
   <xacro:property name="mesh_file" value="package://aeroscan_uav_simulation/meshes/untitled.dae" />
   <xacro:property name="mass" value="5.266" />
+  <xacro:property name="mass_arm" value="0.01" /> <!-- [kg] -->
   <!-- <xacro:property name="mass" value="1.5" /> -->
   <xacro:property name="body_width" value="1.5" />
   <xacro:property name="body_height" value="0.8" />

@@ -53,4 +53,51 @@
     <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> <!-- [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] -->
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </xacro:odometry_plugin_macro>
+
+
+
+
+  <xacro:property name="frame_rate" value="30.0" />
+
+  <joint name="${namespace}/camera_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="${namespace}/base_link" />
+    <child link="${namespace}/camera_link" />
+  </joint>
+
+  <link name="${namespace}/camera_link">
+    <xacro:box_inertial x="${arm_length/3}" y="0.03" z="0.01" mass="${mass_arm/3}">
+      <origin xyz="${arm_length/6} 0 0" />
+    </xacro:box_inertial>
+
+    <visual>
+      <origin xyz="${arm_length/6} 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="${arm_length/3} 0.03 0.01"/> <!-- [m] [m] [m] -->
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="${arm_length/6} 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="${arm_length/3} 0.03 0.01"/> <!-- [m] [m] [m] -->
+      </geometry>
+    </collision>
+  </link>
+
+  <xacro:camera_fisheye
+    namespace="${namespace}"
+    parent_link="${namespace}/camera_link"
+    camera_suffix="fisheye"
+    frame_rate="${frame_rate}"
+    horizontal_fov="6.283"
+    image_width="320"
+    image_height="240"
+    min_distance="0.1"
+    max_distance="100"
+    noise_mean="0.0"
+    noise_stddev="0.007"
+    enable_visual="true">
+    <box size="0.02 0.05 0.05" />
+    <origin xyz="${arm_length/3} 0 0" rpy="0 0 0" />
+  </xacro:camera_fisheye>
 </robot>
