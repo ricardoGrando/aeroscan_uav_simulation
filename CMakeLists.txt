@@ -10,8 +10,7 @@ project(aeroscan_uav_simulation)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
-  std_msgs
-  leica_gazebo_simulation
+  std_msgs  
 )
 
 ## System dependencies are found with CMake's conventions

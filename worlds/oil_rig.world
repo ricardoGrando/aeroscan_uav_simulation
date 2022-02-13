@@ -43,7 +43,7 @@
 
     <include>
       <uri>model://oil_rig</uri>
-      <pose frame=''>0 0 0 0 1.5708 3.141593</pose>
+      <pose frame=''>0 0 0 0 0 0</pose>
     </include>
 
     <!-- <include>
