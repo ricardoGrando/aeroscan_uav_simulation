@@ -444,13 +444,15 @@
       <visual>
           <origin xyz="-0.0 0 0" rpy="1.57 0 3.1415"/>
           <geometry>
-              <mesh filename="file:///$(find aeroscan_uav_simulation)/meshes/scanstation_c5.dae" scale="0.001 0.001 0.001"/>
+              <!-- <mesh filename="file:///$(find aeroscan_uav_simulation)/meshes/scanstation_c5.dae" scale="0.001 0.001 0.001"/> -->
+              <cylinder length="0.0001" radius="0.0001"/>
           </geometry>
       </visual>
       <collision>
           <origin xyz="-0.0 -0. 0" rpy="1.57 0 3.1415"/>
           <geometry>
-              <mesh filename="file:///$(find aeroscan_uav_simulation)/meshes/scanstation_c5.stl" scale="0.001 0.001 0.001"/>
+              <!-- <mesh filename="file:///$(find aeroscan_uav_simulation)/meshes/scanstation_c5.stl" scale="0.001 0.001 0.001"/> -->
+              <cylinder length="0.0001" radius="0.0001"/>
           </geometry>
       </collision>
   </link>
@@ -481,13 +483,16 @@
                   <horizontal>
                       <samples>512</samples>
                       <resolution>1</resolution>
-                      <min_angle>-0.78539816339</min_angle> <!-- Be sure the angle between min and max angle is > 1.5708 -->
+                      <min_angle>-0.78539816339</min_angle>
                       <max_angle>0.78539816339</max_angle>
+                      <!-- <min_angle>-3.14159265359</min_angle>
+                      <max_angle>3.14159265359</max_angle> -->
                   </horizontal>
               </scan>
               <range>
-                  <min>0.15</min>
-                  <max>130.0</max>
+                  <!-- <min>0.15</min> -->
+                  <min>0.5</min>
+                  <max>250.0</max>
                   <resolution>0.01</resolution>
               </range>
               <noise>
