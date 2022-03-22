@@ -105,33 +105,33 @@
 # 		# return the visualization
 # 		return vis
 #
-# # load the two images and resize them to have a width of 400 pixels
-# # (for faster processing)
-# i = 300
-# imageA = cv2.imread('/home/ricardo/fotoesfera/frame0'+str(i)+'.jpg')
-# imageA = imutils.resize(imageA, width=400)
-# while i > 250:
-# 	imageB = cv2.imread('/home/ricardo/fotoesfera/frame0'+str(i-5)+'.jpg')
-#
-# 	imageB = imutils.resize(imageB, width=400)
-# 	# stitch the images together to create a panorama
-# 	stitcher = Stitcher()
-# 	result = stitcher.stitch([imageA, imageB], showMatches=True)
-# 	print(type(result))
-# 	if not type(result) == None:
-# 		print("Whatever")
-# 		# show the images
-# 		cv2.imshow("Image A", imageA)
-# 		cv2.imshow("Image B", imageB)
-# 		# cv2.imshow("Keypoint Matches", vis)
-# 		cv2.imshow("Result", result)
-# 		cv2.imwrite('/home/ricardo/image.png', result)
-# 		imageA = cv2.imread('/home/ricardo/image.png')
-# 		imageA = imutils.resize(imageA, width=400)
-# 		cv2.waitKey(0)
-#
-#
-# 	i -= 5
+# load the two images and resize them to have a width of 400 pixels
+# (for faster processing)
+i = 300
+imageA = cv2.imread('/home/ricardo/fotoesfera/frame0'+str(i)+'.jpg')
+imageA = imutils.resize(imageA, width=400)
+while i > 250:
+	imageB = cv2.imread('/home/ricardo/fotoesfera/frame0'+str(i-5)+'.jpg')
+
+	imageB = imutils.resize(imageB, width=400)
+	# stitch the images together to create a panorama
+	stitcher = Stitcher()
+	result = stitcher.stitch([imageA, imageB], showMatches=True)
+	print(type(result))
+	if not type(result) == None:
+		print("Whatever")
+		# show the images
+		cv2.imshow("Image A", imageA)
+		cv2.imshow("Image B", imageB)
+		# cv2.imshow("Keypoint Matches", vis)
+		cv2.imshow("Result", result)
+		cv2.imwrite('/home/ricardo/image.png', result)
+		imageA = cv2.imread('/home/ricardo/image.png')
+		imageA = imutils.resize(imageA, width=400)
+		cv2.waitKey(0)
+
+
+	i -= 5
 
 import numpy as np
 import imutils
