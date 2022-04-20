@@ -13,16 +13,21 @@ if __name__ == "__main__":
 
     pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
 
-    posx = [105.0        , 115.0    , 125.0,     25.0,     25.0,     25.0,          15.0,       0.0,       -15.0,     -30.0,      -45.0,      -60.0,        -75.0, -90.0, -90.0,   -90.0,     -75.0,     -60.0,     -35.0,     -10.0]
-    posy = [-105.0       , -93.0    , -85.0,     30.0,     40.0,     65.0,          70.0,       70.0,       70.0,      70.0,       70.0,       70.0,         70.0,  60.0,  30.0,    0.0,      -10.0,     -10.0,     -10.0,     -10.0]
-    oriz = [3*math.pi/4, math.pi, math.pi, math.pi, math.pi, -3*math.pi/4, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/2, -math.pi/4, 0.0,   0.0,   0.0,   math.pi/4, math.pi/2, math.pi/2,   math.pi/2]
+    z_pos = 0.5
+    pos_x = 3.0
+    pos_y = 3.0
+
+    posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
+    posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
+    posz = [z_pos, z_pos, z_pos, z_pos, z_pos, -3*z_pos, -3*z_pos, -3*z_pos, -3*z_pos]
 
     i = 0
 
     pose = PoseStamped()
     pose.pose.position.x = 0.0
     pose.pose.position.y = 0.0
-    pose.pose.position.z = 110
+    pose.pose.position.z = 0.0
+    # pose.pose.position.z = 125#-25
 
     pub.publish(pose)
 
@@ -35,13 +40,7 @@ if __name__ == "__main__":
         pose = PoseStamped()
         pose.pose.position.x = posx[i]
         pose.pose.position.y = posy[i]
-        pose.pose.position.z = 110
-
-        wx, wy, wz, ww = quaternion_from_euler(0.0, 0.0, oriz[i])
-        pose.pose.orientation.x = wx
-        pose.pose.orientation.y = wy
-        pose.pose.orientation.z = wz
-        pose.pose.orientation.w = ww
+        pose.pose.position.z = posz[i]
 
         pub.publish(pose)
 
@@ -62,5 +61,3 @@ if __name__ == "__main__":
 
         if (i == len(posx)):
             break
-
-        break

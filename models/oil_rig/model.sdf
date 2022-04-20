@@ -18,7 +18,7 @@
         <pose>-100 100 -100 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/cube1x1x1.obj</uri>
+            <uri>model://oil_rig/meshes/26_transformed.obj</uri>
             <scale>1 1 1</scale>
             <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
             <scale>0.01 0.01 0.01</scale> -->
@@ -35,7 +35,7 @@
         <pose>-100 100 -100 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/cube1x1x1.obj</uri>
+            <uri>model://oil_rig/meshes/26_transformed.obj</uri>
             <scale>1 1 1</scale>
             <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
             <scale>0.01 0.01 0.01</scale> -->

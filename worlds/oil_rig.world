@@ -77,9 +77,9 @@
     </include> -->
 
 
-    <model name='ground_plane'>
+    <!-- <model name='ground_plane'>
       <static>1</static>
-      <pose frame=''>105.0 -105.0 100 0 0 0</pose>
+      <pose frame=''>3.0 3.0 1.0 0 0 0</pose>
       <link name='link'>
         <collision name='collision'>
           <geometry>
@@ -124,7 +124,7 @@
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
       </link>
-    </model>
+    </model> -->
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>

@@ -54,13 +54,10 @@
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </xacro:odometry_plugin_macro>
 
-
-
-
   <xacro:property name="frame_rate" value="30.0" />
 
   <joint name="${namespace}/camera_joint" type="fixed">
-    <origin xyz="0.2 0 0" rpy="0 0 0" />
+    <origin xyz="0.2 0.02 0" rpy="0 0 0" />
     <parent link="${namespace}/base_link" />
     <child link="${namespace}/camera_link" />
   </joint>
@@ -92,7 +89,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="0.01" radius="0.007" />
+          <cylinder length="0.0001" radius="0.0001" />
         </geometry>
       </collision>
       <inertial>
@@ -180,13 +177,6 @@
     </gazebo>
   </xacro:macro>
 
-  <!-- Call depth sensor macro
-    Realsense values -
-      91.2 Deg Horizontal FOV
-      848x480 Optimal depth resolution
-        w 195 mm minimium-z depth
-      5 cm baseline.
-  -->
   <xacro:rgbd_sensor_depth_macro
     namespace="${namespace}" parent_link="${namespace}/camera_link"
     camera_suffix="depth"
