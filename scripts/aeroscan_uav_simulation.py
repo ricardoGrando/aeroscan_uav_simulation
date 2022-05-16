@@ -13,9 +13,9 @@ if __name__ == "__main__":
 
     pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
 
-    z_pos = 0.5
-    pos_x = 3.0
-    pos_y = 3.0
+    z_pos = 100
+    pos_x = 600
+    pos_y = 500
 
     posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
     posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         rospy.wait_for_service('/c5/scan')
         try:
             proxy = rospy.ServiceProxy('/c5/scan', Scan)
-            proxy('scan_sim', 512, 2048, 0.0, 0.0, 2.0, 2.0)
+            proxy('scan_sim', 512, 2048, 0.0, 0.0, 2.05, 2.05)
         except (rospy.ServiceException) as e:
             print("gazebo/reset_simulation service call failed")
 

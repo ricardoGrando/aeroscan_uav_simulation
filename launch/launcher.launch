@@ -10,7 +10,7 @@
   <arg name="verbose" default="false"/>
   <arg name="mapping" default="false"/>
 
-  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/64.obj" />
+  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/70.obj" />
   <param name="cloud_path" type="str" value="$(find leica_scanstation_utils)/pointclouds/scan.pcd" />
   <param name="mapping" type="str" value="$(arg mapping)" />
 

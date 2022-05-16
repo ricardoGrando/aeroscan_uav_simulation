@@ -289,7 +289,7 @@
   <gazebo reference="${namespace}/base_link">
       <static>true</static>
       <sensor type="gpu_ray" name="leica_sensor">
-          <pose>0.0 0 0.0 1.57079632679 0 0</pose>
+          <pose>0.0 0.0 0. 1.57079632679 0 0</pose>
           <visualize>true</visualize>
           <update_rate>40</update_rate>
           <ray>
