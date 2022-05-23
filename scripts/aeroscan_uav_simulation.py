@@ -13,9 +13,9 @@ if __name__ == "__main__":
 
     pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
 
-    z_pos = 100
-    pos_x = 600
-    pos_y = 500
+    z_pos = 0.5
+    pos_x = 10
+    pos_y = 10
 
     posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
     posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
