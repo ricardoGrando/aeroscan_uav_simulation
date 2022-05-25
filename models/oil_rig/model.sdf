@@ -15,10 +15,10 @@
       </inertial>
       <pose>0 0 0 0 -0 0</pose>
       <visual name='visual'>
-        <pose>-100 100 -100 0 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/70_nao_conforme.obj</uri>
+            <uri>model://oil_rig/meshes/cilindro.obj</uri>
             <scale>1 1 1</scale>
             <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
             <scale>0.01 0.01 0.01</scale> -->
@@ -32,10 +32,10 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose>-100 100 -100 0 -0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/70_nao_conforme.obj</uri>
+            <uri>model://oil_rig/meshes/cilindro.obj</uri>
             <scale>1 1 1</scale>
             <!-- <uri>model://oil_rig/meshes/18_z.obj</uri>
             <scale>0.01 0.01 0.01</scale> -->

@@ -116,11 +116,13 @@
         <geometry>
 
           <xacro:if value="${use_own_mesh}">
-            <mesh filename="${mesh}"
-              scale="10 10 10" />
+            <mesh filename="${mesh_file}" scale="1 1 1" />
           </xacro:if>
           <xacro:unless value="${use_own_mesh}">
-            <cylinder length="0.0001" radius="0.0001"/>
+            <mesh filename="package://aeroscan_uav_simulation/meshes/propeller_${direction}.dae"
+              scale="${radius_rotor} ${radius_rotor} ${radius_rotor}" /> <!-- The propeller meshes have a radius of 1m -->
+            <!-- <box size="${2*radius_rotor} 0.01 0.005"/> -->
+            <!-- <cylinder length="0.0001" radius="0.0001"/> -->
           </xacro:unless>
         </geometry>
       </visual>

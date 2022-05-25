@@ -8,9 +8,9 @@
   <arg name="gui" default="true"/>
   <arg name="paused" default="true"/>
   <arg name="verbose" default="false"/>
-  <arg name="mapping" default="false"/>
+  <arg name="mapping" default="true"/>
 
-  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/70_nao_conforme.obj" />
+  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/cilindro.obj" />
   <param name="cloud_path" type="str" value="$(find leica_scanstation_utils)/pointclouds/scan.pcd" />
   <param name="mapping" type="str" value="$(arg mapping)" />
 
