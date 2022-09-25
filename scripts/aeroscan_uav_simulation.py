@@ -6,20 +6,28 @@ from leica_scanstation_msgs.srv import *
 import math
 import time
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
+import csv
+
+vehicle_pose = Pose()
+
+def pose_callback(data):
+    global vehicle_pose
+    vehicle_pose = data
 
 if __name__ == "__main__":
-
     rospy.init_node("aeroscan_uav_simulation", anonymous=False)
 
     pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
 
-    z_pos = 0.5
-    pos_x = 10
-    pos_y = 10
+    rospy.Subscriber("/c5/odometry_sensor1/pose", Pose, pose_callback)
+
+    z_pos = 10
+    pos_x = 15
+    pos_y = 15
 
     posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
     posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
-    posz = [z_pos, z_pos, z_pos, z_pos, z_pos, -3*z_pos, -3*z_pos, -3*z_pos, -3*z_pos]
+    posz = [z_pos, z_pos, z_pos, z_pos, z_pos, -z_pos, -z_pos, -z_pos, -z_pos]
 
     i = 0
 
@@ -36,7 +44,7 @@ if __name__ == "__main__":
     pub.publish(pose)
 
     while not rospy.is_shutdown():
-
+        offset = 0
         pose = PoseStamped()
         pose.pose.position.x = posx[i]
         pose.pose.position.y = posy[i]
@@ -44,9 +52,36 @@ if __name__ == "__main__":
 
         pub.publish(pose)
 
-        print(pose)
+        time.sleep(15)
 
-        time.sleep(45)
+        print("Testing offset")
+
+        while (True):
+            if (abs(posz[i]-vehicle_pose.position.z)>0.25):
+                offset += 0.2
+                if (vehicle_pose.position.z - posz[i] > 0.25):
+                    pose.pose.position.z = posz[i] - offset
+                elif (vehicle_pose.position.z - posz[i] < -0.25):
+                    pose.pose.position.z = posz[i] + offset
+                else:
+                    print("Offset tested")
+                    break
+
+                pub.publish(pose)
+
+                time.sleep(2)
+            else:
+                print("Offset tested")
+                break
+
+        print("Saving to disk")
+        with open('/home/ricardo/pos.csv', 'a') as csvfile:
+            spamwriter = csv.writer(csvfile, delimiter=' ',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            if (i == 0):
+                spamwriter.writerow(["Posx", "Posy", "Posz"])
+            else:
+                spamwriter.writerow([vehicle_pose.position.x, vehicle_pose.position.y, vehicle_pose.position.z])
 
         rospy.wait_for_service('/c5/scan')
         try:
