@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
         pub.publish(pose)
 
-        time.sleep(15)
+        time.sleep(60)
 
         print("Testing offset")
 
