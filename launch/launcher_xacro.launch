@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="mesh_file" default="/home/ricardo/80.obj" />
+
+  <!-- Load the mobile-arm description on the parameter server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder
+                       '$(find aeroscan_uav_simulation)/xacro/model.urdf.xacro'
+                       mesh_file:=$(arg mesh_file)"/>
+
+ <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+   args="-urdf -model mybot -param robot_description"/>
+</launch>

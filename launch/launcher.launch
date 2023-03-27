@@ -1,16 +1,16 @@
 <launch>
   <arg name="mav_name" default="c5"/>
-  <arg name="world_name" default="oil_rig"/>
+  <arg name="world_name" default="basic"/>
   <arg name="enable_logging" default="false" />
   <arg name="enable_ground_truth" default="true" />
   <arg name="log_file" default="$(arg mav_name)" />
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <arg name="verbose" default="false"/>
   <arg name="mapping" default="true"/>
 
-  <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/8.obj" />
+  <!-- <param name="mesh_path" type="str" value="$(find aeroscan_uav_simulation)/models/oil_rig/meshes/8.obj" /> -->
   <param name="cloud_path" type="str" value="$(find leica_scanstation_utils)/pointclouds/scan.pcd" />
   <param name="mapping" type="str" value="$(arg mapping)" />
 
@@ -44,6 +44,16 @@
     </group>
   </group>
 
+  <arg name="mesh_file" default="/home/ricardo/80.obj" />
+
+  <!-- Load the mobile-arm description on the parameter server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder
+                       '$(find aeroscan_uav_simulation)/xacro/model.urdf.xacro'
+                       mesh_file:=$(arg mesh_file)"/>
+
+ <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+   args="-urdf -model mybot -param robot_description"/>
+
   <arg name="namespace" default="c5"/>
 
   <node name="laserscan_to_pointcloud" pkg="leica_gazebo_simulation" type="laserscan_to_pointcloud" ns="$(arg namespace)" output="screen"/>
@@ -53,7 +63,5 @@
   <node name="move_c5_pan" pkg="leica_gazebo_simulation" type="move_c5_pan.py" output="screen"/>
 
   <node name="publisher_tf" pkg="leica_gazebo_simulation" type="publish_tf.py" output="screen"/>
-
-  <!-- <node name="aeroscan_uav_simulation_node" pkg="aeroscan_uav_simulation" type="aeroscan_uav_simulation.py" output="screen"/> -->
 
 </launch>
