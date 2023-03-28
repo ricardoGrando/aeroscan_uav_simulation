@@ -20,7 +20,6 @@ print(models_list)
 
 myCmd1 = "ps -ef | grep 'gazebo' | grep -v grep | awk '{print $2}' | xargs -r kill -9"
 myCmd2 = "roslaunch aeroscan_uav_simulation launcher.launch mesh_file:="+models_list[0]+" &"
-myCmd3 = "roslaunch aeroscan_uav_simulation launcher.launch mesh_file:="+models_list[1]+" &"
 
 vehicle_pose = Pose()
 
@@ -31,8 +30,8 @@ def pose_callback(data):
 if __name__ == "__main__":
     rospy.init_node("aeroscan_uav_simulation", anonymous=False)
 
-    os.system(myCmd2)
-    print("gazebo launched")
+    # os.system(myCmd2)
+    # print("gazebo launched")
 
     # modelo pra teste: 20160613office_model_CV2b_fordesign
 
@@ -46,46 +45,56 @@ if __name__ == "__main__":
     # os.system(myCmd1)
     # print("gazebo killed")
 
-    pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
+    for i in range (0, len(models_list)):
+        myCmd2 = "roslaunch aeroscan_uav_simulation launcher.launch mesh_file:="+models_list[i]+" &"
 
-    rospy.Subscriber("/c5/odometry_sensor1/pose", Pose, pose_callback)
+        os.system(myCmd2)
+        print("gazebo launched")
 
-    z_pos = 5
-    pos_x = 20
-    pos_y = 20
+        time.sleep(30)
 
-    posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
-    posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
-    posz = [z_pos, z_pos, z_pos, z_pos, z_pos, -z_pos, -z_pos, -z_pos, -z_pos]
+        os.system(myCmd1)
+        print("gazebo killed")
 
-    i = 0
+        time.sleep(5)
 
-    pose = PoseStamped()
-    pose.pose.position.x = pos_x
-    pose.pose.position.y = pos_y
-    pose.pose.position.z = z_pos
-    # pose.pose.position.z = 125#-25
-
-    time.sleep(1)
-    pub.publish(pose)
-    time.sleep(1)
-    pub.publish(pose)
-    time.sleep(1)
-    pub.publish(pose)
-    time.sleep(1)
-    pub.publish(pose)
-    time.sleep(1)
-    pub.publish(pose)
-    time.sleep(1)
-    pub.publish(pose)
-
-
-    time.sleep(60)
-
-    os.system(myCmd1)
-    print("gazebo killed")
-
-
+    # pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
+    #
+    # rospy.Subscriber("/c5/odometry_sensor1/pose", Pose, pose_callback)
+    #
+    # z_pos = 5
+    # pos_x = 20
+    # pos_y = 20
+    #
+    # posx = [pos_x, pos_x, pos_x, -pos_x, -pos_x, pos_x, pos_x, -pos_x, -pos_x]
+    # posy = [pos_y, pos_y, -pos_y, -pos_y, pos_y, pos_y, -pos_y, -pos_y, pos_y]
+    # posz = [z_pos, z_pos, z_pos, z_pos, z_pos, -z_pos, -z_pos, -z_pos, -z_pos]
+    #
+    # i = 0
+    #
+    # pose = PoseStamped()
+    # pose.pose.position.x = pos_x
+    # pose.pose.position.y = pos_y
+    # pose.pose.position.z = z_pos
+    # # pose.pose.position.z = 125#-25
+    #
+    # time.sleep(1)
+    # pub.publish(pose)
+    # time.sleep(1)
+    # pub.publish(pose)
+    # time.sleep(1)
+    # pub.publish(pose)
+    # time.sleep(1)
+    # pub.publish(pose)
+    # time.sleep(1)
+    # pub.publish(pose)
+    # time.sleep(1)
+    # pub.publish(pose)
+    #
+    # time.sleep(60)
+    #
+    # os.system(myCmd1)
+    # print("gazebo killed")
 
     # while not rospy.is_shutdown():
     #     offset = 0
