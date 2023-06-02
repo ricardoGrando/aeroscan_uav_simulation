@@ -12,11 +12,12 @@ import openmesh as om
 import numpy as np
 
 models_list = []
+models_list.append("/home/ricardo/catkin_ws/src/aeroscan_uav_simulation/models/oil_rig/meshes/8.obj")
 
-with open('/home/ricardo/file.csv', newline='') as csvfile:
-    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-    for row in spamreader:
-        models_list.append(str(row[0]))
+# with open('/home/ricardo/file.csv', newline='') as csvfile:
+#     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+#     for row in spamreader:
+#         models_list.append(str(row[0]))
 
 print(models_list)
 
@@ -56,12 +57,12 @@ def goto_and_map(x,y,z):
             print("Offset tested")
             break
 
-    print("Saving to disk")
-    with open('/home/ricardo/pos.csv', 'a') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=' ',
-                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
-
-        spamwriter.writerow([vehicle_pose.position.x, vehicle_pose.position.y, vehicle_pose.position.z])
+    # print("Saving to disk")
+    # with open('/home/ricardo/pos.csv', 'a') as csvfile:
+    #     spamwriter = csv.writer(csvfile, delimiter=' ',
+    #                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    #
+    #     spamwriter.writerow([vehicle_pose.position.x, vehicle_pose.position.y, vehicle_pose.position.z])
 
     rospy.wait_for_service('/c5/scan')
     try:
@@ -148,16 +149,16 @@ if __name__ == "__main__":
         # print(pos_y)
         # print(pos_z)
 
-        with open('/home/ricardo/pos.csv', 'a') as csvfile:
-            spamwriter = csv.writer(csvfile, delimiter=' ',
-                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
-
-            spamwriter.writerow([models_list[i]])
+        # with open('/home/ricardo/pos.csv', 'a') as csvfile:
+        #     spamwriter = csv.writer(csvfile, delimiter=' ',
+        #                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        #
+        #     spamwriter.writerow([models_list[i]])
 
         for x in pos_x:
             for z in pos_z:
                 print(x, pos_y[0], z)
-                goto_and_map(x,pos_y[0],z)                
+                goto_and_map(x,pos_y[0],z)
 
         # pos_z = pos_z[::-1]
         #
@@ -186,6 +187,8 @@ if __name__ == "__main__":
         print("gazebo killed")
 
         time.sleep(60)
+
+        break
 
     # pub = rospy.Publisher('/c5/command/pose', PoseStamped, queue_size=10)
     #
